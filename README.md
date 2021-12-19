@@ -1,6 +1,6 @@
 # React Music Player
 
-A music player made with react.
+A music player made with React.
 
 It have an object file with a list of songs playable (not from API).
 
