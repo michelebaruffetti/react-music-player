@@ -1,9 +1,9 @@
 
-const LibrarySong = ({song, songs, setCurrentSong, id}) => {
+const LibrarySong = ({song, setCurrentSong, setIsPlaying}) => {
     //handler
     const songSelectHandler = () =>{
-        const selectedSong = songs.filter( el => el.id === id);
-        setCurrentSong(selectedSong[0]);
+        setCurrentSong(song);
+        setIsPlaying(false);
     }
 
     return (
