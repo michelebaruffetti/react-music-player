@@ -18,7 +18,7 @@ function App() {
       <h1>Music Player</h1>
       <Song currentSong={currentSong}/>
       <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
-      <Library songs={songs} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying}/>
+      <Library songs={songs} setCurrentSong={setCurrentSong} setIsPlaying={setIsPlaying} setSongs={setSongs}/>
     </div>
   );
 }

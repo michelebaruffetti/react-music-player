@@ -18,7 +18,7 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
     }
     const timeUpdateHandler = (e) => {
         const current = e.target.currentTime; 
-        const duration = e.target.duration; 
+        const duration = e.target.duration || 0; 
         setSongInfo({...songInfo, currentTime: current, duration: duration});
     }
     const getTime = (time) => {
@@ -30,6 +30,12 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
         audioRef.current.currentTime = e.target.value; 
         setSongInfo({...songInfo, currentTime: e.target.value});
     }
+    const autoPlayHandler = () => {
+        if (isPlaying) {
+          audioRef.current.play();
+        }
+      }
+    
     //state for this component only
     const [songInfo, setSongInfo] = useState({
         currentTime: 0,
@@ -53,6 +59,7 @@ const Player = ({currentSong, isPlaying, setIsPlaying}) => {
                 src={currentSong.audio} 
                 onTimeUpdate={timeUpdateHandler}
                 onLoadedMetadata={timeUpdateHandler}
+                onLoadedData={autoPlayHandler}
             ></audio>
         </div>
     )
