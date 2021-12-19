@@ -1,7 +1,9 @@
 # React Music Player
 
 A music player made with react.
+
 It have an object file with a list of songs playable (not from API).
+
 (At the moment the project is not completed, but working in some features)
 
 ## How to start it 
