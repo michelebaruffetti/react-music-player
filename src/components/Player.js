@@ -1,11 +1,22 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 // import fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons'
 
-const Player = ({currentSong, isPlaying, setIsPlaying, setCurrentSong, songs}) => {
+const Player = ({currentSong, isPlaying, setIsPlaying, setCurrentSong, songs, setSongs}) => {
     // ref
     const audioRef = useRef(null);
+    //useEffect to update active song in library
+    useEffect(() => {
+        setSongs(
+            songs.map( el => {
+                return({
+                    ...el,
+                    active: el.id === currentSong.id
+                })
+            })
+        );
+    }, [currentSong])
     // event handlers
     const playSongHandler = () => {
         if (isPlaying){
