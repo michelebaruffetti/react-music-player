@@ -48,12 +48,17 @@ const Player = ({currentSong, isPlaying, setIsPlaying, setCurrentSong, songs, se
     }
     const skipTrackHandler = (direction) => {
         let currentSongIndex = songs.findIndex(song => song.id === currentSong.id);
-        console.log({currentSongIndex});
         if(direction === 'skip-forward'){
             setCurrentSong(songs[currentSongIndex+1 === songs.length ? 0 : currentSongIndex+1]);
         }
         if(direction === 'skip-back'){
             setCurrentSong(songs[currentSongIndex-1 < 0 ? songs.length-1 : currentSongIndex-1]);
+        }
+    }
+    const songEndHandler = () => {
+        let currentSongIndex = songs.findIndex(song => song.id === currentSong.id);
+        if(isPlaying){
+            setCurrentSong(songs[currentSongIndex+1 === songs.length ? 0 : currentSongIndex+1]);
         }
     }
     
@@ -81,6 +86,7 @@ const Player = ({currentSong, isPlaying, setIsPlaying, setCurrentSong, songs, se
                 onTimeUpdate={timeUpdateHandler}
                 onLoadedMetadata={timeUpdateHandler}
                 onLoadedData={autoPlayHandler}
+                onEnded={songEndHandler}
             ></audio>
         </div>
     )
